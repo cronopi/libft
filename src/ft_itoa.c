@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 14:11:04 by rcastano          #+#    #+#             */
-/*   Updated: 2023/01/18 11:59:48 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:10:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	fill_string(long int nbr, char *str, int i)
 	}
 }
 
-// de que sirve el i?
 static int	string_size(long long int n, int i)
 {
 	if (n == 0)
@@ -68,7 +67,6 @@ char	*ft_itoa(int n)
 	if (!str)
 		return (NULL);
 	str[i + sign] = '\0';
-	//if (nbr >= 0)
 	fill_string(nbr, str, i + sign);
 	if (sign)
 		str[0] = '-';
@@ -79,7 +77,7 @@ char	*ft_itoa(int n)
 {
 	char *str;
 
-	str = ft_itoa(-9);
+	str = ft_itoa(9);
 	printf("me estás imprimiendo esto %s\n", str);
 	free (str);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:33:46 by rcastano          #+#    #+#             */
-/*   Updated: 2023/01/18 13:07:50 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/01/18 18:47:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,11 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	needle = (char *)little;
 	if (little[0] == '\0')
 		return ((char *)big);
-	while (i < len)
+	while (i < len && stack[i] != '\0')
 	{
 		j = 0;
-		while (i + j < len && needle[j] == stack[i + j])
+		while (stack[i] && i + j < len && needle[j] == stack[i + j])
 		{
-			printf("test\n");
 			if (needle[j + 1] == '\0')
 			{
 				return (&stack[i]);
@@ -41,13 +40,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	return (0);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	char big[] = "";
-	char little[] = "coucou";
-	printf("%s", ft_strnstr(big, little, -1));
+	char little[] = "xx";
+	printf("%s", ft_strnstr(big, little, 4294967295));
 	return (0);
-}
+} */
 /*
 j++
 

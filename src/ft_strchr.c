@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:24:48 by rcastano          #+#    #+#             */
-/*   Updated: 2023/01/18 14:51:23 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/01/18 19:24:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
 
-/* char	*ft_strchr(const char *str, int c)
+char	*ft_strchr(const char *str, int c)
 {
 	int		i;
 	char	*ptr;
 	char  cast_c;
-	
+
 	ptr = (char *)str;
 	i = 0;
 	cast_c = (char) c;
@@ -30,9 +30,9 @@
 	if (cast_c == '\0')
 		return (&ptr[i]);
 	return (0);
-} */
+}
 
-char	*ft_strchr(const char *str, int c)
+/* char	*ft_strchr(const char *str, int c)
 {
 	int	i;
 
@@ -46,9 +46,9 @@ char	*ft_strchr(const char *str, int c)
 	if ((char)c == '\0')
 		return ((char *)&str[i]);
 	return (0);
-}
+} */
 
-int	main(void)
+/* int	main(void)
 {
 	const char str[] = "teste";
 	int c;
@@ -56,4 +56,4 @@ int	main(void)
 	c = 'a';
 	printf("%s \n", ft_strchr(str, c));
 	return (0);
-}
+} */

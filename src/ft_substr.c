@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:38:32 by rcastano          #+#    #+#             */
-/*   Updated: 2023/01/18 12:52:24 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/01/18 20:06:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,15 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 /* int	main(void)
 {
-	char const s[] = "a fumar porros";
+	char const s[] = "tripouille";
 	unsigned int start;
 	size_t len;
+	char *str;
 
-	start = 8;
-	len = 6;
-	printf("%s", ft_substr(s, start, len));
+	start = 4;
+	len = 42000;
+	str = ft_substr(s, start, len);
+	printf("%s", str);
+	free(str);
 	return (0);
 } */
