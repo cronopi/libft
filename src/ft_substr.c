@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:38:32 by rcastano          #+#    #+#             */
-/*   Updated: 2023/01/18 20:06:15 by marvin           ###   ########.fr       */
+/*   Updated: 2023/01/19 11:11:13 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,22 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*d;
-	unsigned int	i;
 	size_t			j;
 
 	j = 0;
-	i = 0;
 	if (!s)
 		return (NULL);
-	while (i < start)
-		i++;
-	if (start >= strlen(s))
+	if (start >= ft_strlen(s))
 		len = 0;
-	d = malloc((len + 1));
+	if (len > ft_strlen(s))
+		len = ft_strlen(s);
+	d = malloc(sizeof(char) * (len + 1));
 	if (d == 0)
 		return (NULL);
-	while (j < len && s[i] != '\0')
+	while (j < len && s[start] != '\0')
 	{
-		d[j] = s[i];
-		i++;
+		d[j] = s[start];
+		start++;
 		j++;
 	}
 	d[j] = '\0';
@@ -46,7 +44,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t len;
 	char *str;
 
-	start = 4;
+	start = 0;
 	len = 42000;
 	str = ft_substr(s, start, len);
 	printf("%s", str);

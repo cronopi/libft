@@ -1,18 +1,60 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/19 09:49:22 by rcastano          #+#    #+#             */
+/*   Updated: 2023/01/19 12:42:10 by rcastano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/libft.h"
-
-/*ft_string_lengh()
+/* 
+char	**ft_string_lengh(char **str, char *s, char c, char strings)
 {
+	//ft_string_lengh(str, (char *)s, c, number_of_splits(s, c));
+	int	i;
+	int	index_strings;
+	int	l;
+	int	letra;
 
-}*/
+	i = 0;
+	index_strings = 0;
+	while (index_strings < strings)
+	{
+		l = 0;
+		letra = 0;
+		while (s[i] == c)
+			i++;
+		while (s[i + letra] != '\0' && s[i + letra] != c)
+			letra++;
+		if (letra > 0)
+			str[index_strings] = malloc(sizeof(char) * letra + 1);
+		else
+			str[index_strings] = malloc(sizeof(char) * 1);
+		while (l < letra)
+		{
+			str[index_strings][l] = s[i];
+			l++;
+			i++;
+		}
+		str[index_strings][l] = '\0';
+		index_strings++;
+		i++;
+	}
+	str[index_strings] = NULL;
+	return (str);
+} */
 
-static int	number_of_splits(char const *s, char c) // despues del último caracter a imprimir
+static int	number_of_splits(char const *s, char c)
 {
-	int i;
-	int strings;
-
+	int	i;
+	int	strings;
+	
 	strings = 0;
 	i = 0;
-	//while (s[i] == c)
 	while (s[i] && s[i] == c)
 		i++;
 	while (s[i] != '\0')
@@ -28,7 +70,6 @@ static int	number_of_splits(char const *s, char c) // despues del último caract
 	}
 	if (i != 0 && s[i] == '\0' && s[i - 1] != c)
 		strings++;
-	//strings++;
 	return (strings);
 }
 
@@ -37,9 +78,9 @@ char	**ft_split(char const *s, char c)
 	char	**str;
 	int		strings;
 	int		i;
-	int		index_strings;
 	int		l;
-	int		letra;
+	int 	letra;
+	int		index_strings;
 
 	if (!s)
 		return (NULL);
@@ -49,28 +90,24 @@ char	**ft_split(char const *s, char c)
 		return (0);
 	i = 0;
 	index_strings = 0;
-	//while (index_strings < strings || index_strings == 0)
-	while (index_strings < strings)// || index_strings == 0)
+	while (index_strings < strings)
 	{
 		l = 0;
 		letra = 0;
-		//printf("la i es %i\n", i);
 		while (s[i] == c)
 			i++;
 		while (s[i + letra] != '\0' && s[i + letra] != c)
 			letra++;
-//		printf("leeetra %i\n", letra);
 		if (letra > 0)
-			str[index_strings] = malloc(sizeof(char ) * letra + 1);
+			str[index_strings] = malloc(sizeof(char) * letra + 1);
 		else
-			str[index_strings] = malloc(sizeof(char ) * 1);
+			str[index_strings] = malloc(sizeof(char) * 1);
 		while (l < letra)
 		{
 			str[index_strings][l] = s[i];
 			l++;
 			i++;
 		}
-	//	printf("nulldir %i\n", l);
 		str[index_strings][l] = '\0';
 		index_strings++;
 		i++;
@@ -79,14 +116,12 @@ char	**ft_split(char const *s, char c)
 	return (str);
 }
 
-
-
 /* int	main(void)
 {
-	//char const s[] = "xxsplitxxxxthisxxxxxxforxmexxx!xxuwux";
-	char const s[] = "  tripouille 42  ";
+	char const s[] = "xxsplitxxxxthisxxxxxxforxmexxx!xxuwux";
+	//char const s[] = "  tripouille 42  ";
 	//char const s[] = "split1xsplit2";
-	char c = ' ';
+	char c = 'x';
 	char **str = ft_split(s, c);
 	int i;
 
@@ -96,6 +131,11 @@ char	**ft_split(char const *s, char c)
 		printf("%s\n", str[i]);
 		i++;
 	}
+
+	return (0);
+} */
+
+/*
 	//check if the last character of str[1]is a null;
 
 	//printf("%c\n", str[1][ft_strlen(str[1]) + 1]);
@@ -123,7 +163,6 @@ char	**ft_split(char const *s, char c)
 	if(str[1][ft_strlen(str[1]) + 1] == '\0')
 		printf("OK\n");
 
-
 	if(!strcmp(str[1], "42"))
 		printf("OK\n");
 	else{
@@ -144,11 +183,8 @@ char	**ft_split(char const *s, char c)
 		printf("OK\n");
 	else
 		printf("KO\n");
-	return (0);
-} */
 
-
-/* 	if (!str_lengh(s))
+	if (!str_lengh(s))
 	if (s[0] == '')
 			str = malloc(sizeof(char *) * 1);
 	else
