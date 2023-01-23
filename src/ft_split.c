@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/19 09:49:22 by rcastano          #+#    #+#             */
-/*   Updated: 2023/01/19 12:42:10 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/01/21 10:53:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/libft.h"
-/* 
-char	**ft_string_lengh(char **str, char *s, char c, char strings)
+
+static char	**ft_string_lengh(char **str, char *s, char c, char strings)
 {
-	//ft_string_lengh(str, (char *)s, c, number_of_splits(s, c));
 	int	i;
 	int	index_strings;
 	int	l;
@@ -32,27 +31,21 @@ char	**ft_string_lengh(char **str, char *s, char c, char strings)
 			letra++;
 		if (letra > 0)
 			str[index_strings] = malloc(sizeof(char) * letra + 1);
-		else
-			str[index_strings] = malloc(sizeof(char) * 1);
 		while (l < letra)
-		{
-			str[index_strings][l] = s[i];
-			l++;
-			i++;
-		}
+			str[index_strings][l++] = s[i++];
 		str[index_strings][l] = '\0';
 		index_strings++;
 		i++;
 	}
 	str[index_strings] = NULL;
 	return (str);
-} */
+}
 
 static int	number_of_splits(char const *s, char c)
 {
 	int	i;
 	int	strings;
-	
+
 	strings = 0;
 	i = 0;
 	while (s[i] && s[i] == c)
@@ -77,10 +70,6 @@ char	**ft_split(char const *s, char c)
 {
 	char	**str;
 	int		strings;
-	int		i;
-	int		l;
-	int 	letra;
-	int		index_strings;
 
 	if (!s)
 		return (NULL);
@@ -88,31 +77,7 @@ char	**ft_split(char const *s, char c)
 	str = malloc(sizeof(char *) * (strings + 1));
 	if (!str)
 		return (0);
-	i = 0;
-	index_strings = 0;
-	while (index_strings < strings)
-	{
-		l = 0;
-		letra = 0;
-		while (s[i] == c)
-			i++;
-		while (s[i + letra] != '\0' && s[i + letra] != c)
-			letra++;
-		if (letra > 0)
-			str[index_strings] = malloc(sizeof(char) * letra + 1);
-		else
-			str[index_strings] = malloc(sizeof(char) * 1);
-		while (l < letra)
-		{
-			str[index_strings][l] = s[i];
-			l++;
-			i++;
-		}
-		str[index_strings][l] = '\0';
-		index_strings++;
-		i++;
-	}
-	str[index_strings] = NULL;
+	ft_string_lengh(str, (char *)s, c, strings);
 	return (str);
 }
 
