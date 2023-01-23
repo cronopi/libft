@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:28:21 by rcastano          #+#    #+#             */
-/*   Updated: 2023/01/23 01:15:40 by marvin           ###   ########.fr       */
+/*   Updated: 2023/01/23 11:12:38 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	i;
 	size_t	j;
 	size_t	k;
-	size_t	l;
 
-	j = 0;
-	i = ft_strlen(dst);
 	k = ft_strlen(src);
-	l = i;
-	if (size <= l)
+	if (!dst && !size)
+		return (k);
+	i = 0;
+	j = ft_strlen(dst);
+	if (size <= j)
 		return (k + size);
 	else
-		l = l + k;
-	while (src[j] != '\0' && i + 1 < size)
 	{
-		dst[i] = src[j];
-		j++;
-		i++;
+		while (i + j < size - 1 && i < j + k && src[i] != '\0')
+		{
+			dst[j + i] = src[i];
+			i++;
+		}
+		dst[j + i] = '\0';
 	}
-	dst[i] = '\0';
-	return (l);
+	return (j + k);
 }
 
 /* size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t size)
