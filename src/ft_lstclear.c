@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 10:37:09 by rcastano          #+#    #+#             */
-/*   Updated: 2023/01/23 10:37:10 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:52:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,30 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	t_list	*templ;
 	t_list	*new;
 
-	templ = *lst;
-	if (!lst || !del)
+	if (lst == NULL || *lst == NULL || del == NULL)
 		return ;
-	while (templ)
+	while (*lst != NULL)
 	{
-		new = templ->next;
-		del(templ->content);
-		free(templ);
-		templ = new;
+		new = (*lst)->next;
+		del((*lst)->content);
+		free((*lst));
+		(*lst) = new;
 	}
-	*lst = NULL;
+	//*lst = NULL;
 }
+
+/* void    ft_lstclear(t_list **lst, void (*del)(void*))
+{
+    t_list  *begin;
+
+    if (!lst || !*lst)
+        return ;
+    while (*lst != NULL)
+    {
+        begin = (*lst)->next;
+        ft_lstdelone((*lst), del);
+        (*lst) = begin;
+    }
+} */

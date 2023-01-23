@@ -10,17 +10,16 @@ src/ft_memchr.c src/ft_memcmp.c src/ft_memcpy.c src/ft_memmove.c src/ft_memset.c
 src/ft_strlcpy.c src/ft_strlen.c src/ft_strncmp.c src/ft_strnstr.c src/ft_strrchr.c src/ft_tolower.c src/ft_toupper.c src/ft_strjoin.c\
 src/ft_strtrim.c src/ft_substr.c src/ft_striteri.c src/ft_putchar_fd.c src/ft_split.c src/ft_strmapi.c src/ft_putstr_fd.c src/ft_putnbr_fd.c\
 src/ft_putendl_fd.c src/ft_itoa.c\
-#src/ft_lstnew.c src/ft_lstadd_front.c src/ft_lstlast.c src/ft_lstsize.c src/ft_lstadd_back.c src/ft_lstdelone.c src/ft_lstclear.c src/ft_lstiter.c
 
-BONUSSRC = src/ft_lstnew_bonus.c src/ft_lstadd_front_bonus.c src/ft_lstlast_bonus.c src/ft_lstsize_bonus.c\
+#BONUSSRC = src/ft_lstnew_bonus.c src/ft_lstadd_front_bonus.c src/ft_lstlast_bonus.c src/ft_lstsize_bonus.c\
 src/ft_lstadd_back_bonus.c src/ft_lstdelone_bonus.c src/ft_lstclear_bonus.c src/ft_lstiter_bonus.c
 
-BONUSSRC =
+BONUSSRC = src/ft_lstnew.c src/ft_lstadd_front.c src/ft_lstlast.c src/ft_lstsize.c src/ft_lstadd_back.c src/ft_lstdelone.c src/ft_lstclear.c src/ft_lstiter.c
 
 OBJ = $(SRC:.c=.o)
 INCLUDE = inc/libft.h
 
-BONUSOBJ = $(BONUSSRC: .c=.o)
+BONUSOBJ = $(BONUSSRC:.c=.o)
 
 #funciones o comandos (?)
 all: $(NAME)
@@ -46,6 +45,6 @@ fclean: clean
 
 re: fclean all
 
-rebonus: fclean bonus
+#rebonus: fclean bonus
 
 .PHONY: bonus all clean fclean re
