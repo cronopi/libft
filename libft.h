@@ -6,7 +6,7 @@
 /*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:05:31 by rcastano          #+#    #+#             */
-/*   Updated: 2023/01/25 17:27:58 by rcastano         ###   ########.fr       */
+/*   Updated: 2023/01/25 18:07:22 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,11 @@ char	*ft_strdup(const char *s);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlen(const char *s);
-int		ft_strncmp( const char *str1, const char *str2, size_t num)
-char	*strstr(const char *haystack, const char *needle);
+int		ft_strncmp( const char *str1, const char *str2, size_t num);
+char	*ft_strstr(const char *haystack, const char *needle);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *str, int c);
-int		tolower(int c);
+int		ft_tolower(int c);
 int		ft_toupper(int c);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	ft_putchar_fd(char c, int fd);
