@@ -22,13 +22,12 @@ BONUSOBJ = $(BONUSSRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(INCLUDE)
-	$(LIB) $(NAME) $(OBJ)
+	$(LIB) $(NAME) $(OBJ) $(INCLUDE) 
 
-bonus: $(OBJ) $(BONUSOBJ) $(INCLUDE)
-	$(LIB) $(NAME) $(BONUSOBJ) $(OBJ)
+test: bonus
 
-%.o: %.c
-	$(CC) $(CCFLAGS) -c -o $@ $<
+bonus: $(BONUSOBJ)
+	@$(LIB) $(NAME) $(BONUSOBJ)
 
 clean:
 	$(RM) $(OBJ) $(BONUSOBJ)
@@ -38,6 +37,6 @@ fclean: clean
 
 re: fclean all
 
-#rebonus: fclean bonus
+rebonus: fclean bonus
 
-.PHONY: bonus all clean fclean re
+.PHONY: all clean fclean re
