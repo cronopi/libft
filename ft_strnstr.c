@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rcastano <rcastano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 11:33:46 by rcastano          #+#    #+#             */
-/*   Updated: 2023/01/23 16:27:15 by marvin           ###   ########.fr       */
+/*   Updated: 2023/01/25 17:14:07 by rcastano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
 	size_t	j;
 	char	*stack;
-	char	*needle;
+	char	*tmp_needle;
 
 	i = 0;
-	stack = (char *)big;
-	needle = (char *)little;
-	if (little[0] == '\0')
-		return ((char *)big);
+	stack = (char *)haystack;
+	tmp_needle = (char *)needle;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
 	while (i < len && stack[i] != '\0')
 	{
 		j = 0;
-		while (stack[i] && i + j < len && needle[j] == stack[i + j])
+		while (stack[i] && i + j < len && tmp_needle[j] == stack[i + j])
 		{
-			if (needle[j + 1] == '\0')
+			if (tmp_needle[j + 1] == '\0')
 			{
 				return (&stack[i]);
 			}
@@ -42,9 +42,9 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 /* int	main(void)
 {
-	char big[] = "";
-	char little[] = "xx";
-	printf("%s", ft_strnstr(big, little, 4294967295));
+	char haystack[] = "";
+	char needle[] = "xx";
+	printf("%s", ft_strnstr(haystack, needle, 4294967295));
 	return (0);
 } */
 /*
